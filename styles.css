@@ -8,8 +8,10 @@
     --border-color: #cccccc;
     --accent-color: #2196F3;
     --accent-hover: #1976D2;
+    --error-color: #f44336;
     --shadow: rgba(0, 0, 0, 0.1);
     --modal-overlay: rgba(0, 0, 0, 0.5);
+    --aspect-ratio-16-9: 56.25%;
 }
 
 [data-theme="dark"] {
@@ -21,6 +23,7 @@
     --border-color: #444444;
     --accent-color: #42A5F5;
     --accent-hover: #64B5F6;
+    --error-color: #ff5252;
     --shadow: rgba(0, 0, 0, 0.3);
     --modal-overlay: rgba(0, 0, 0, 0.7);
 }
@@ -110,7 +113,7 @@ body {
     box-shadow: 0 4px 8px var(--shadow);
     aspect-ratio: 16 / 9;
     /* Fallback for older browsers */
-    padding-bottom: 56.25%; /* 16:9 ratio */
+    padding-bottom: var(--aspect-ratio-16-9);
 }
 
 @supports (aspect-ratio: 16 / 9) {

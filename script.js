@@ -56,7 +56,7 @@ class ChannelManager {
 
     addChannel(name, url) {
         const channel = {
-            id: Date.now() + Math.random().toString(36).substr(2, 9),
+            id: Date.now() + Math.random().toString(36).substring(2, 11),
             name: name.trim(),
             url: url.trim()
         };
@@ -268,7 +268,9 @@ class ModalManager {
     }
 
     showInputError(input, message) {
-        input.style.borderColor = '#f44336';
+        // Get computed style to use CSS variable
+        const errorColor = getComputedStyle(document.documentElement).getPropertyValue('--error-color').trim();
+        input.style.borderColor = errorColor;
         input.focus();
         input.setAttribute('placeholder', message);
         
