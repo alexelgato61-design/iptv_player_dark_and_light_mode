@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Player - Dark & Light Mode</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header with theme toggle -->
+        <header class="header">
+            <h1>IPTV Player</h1>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <!-- Main content area -->
+        <main class="main-content">
+            <!-- Video player section -->
+            <div class="player-section">
+                <div class="video-container">
+                    <video id="videoPlayer" controls>
+                        <source src="" type="application/x-mpegURL">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-placeholder">
+                        <p>Select a channel to start watching</p>
+                    </div>
+                </div>
+                
+                <!-- Player controls -->
+                <div class="player-controls">
+                    <div class="current-channel">
+                        <span id="currentChannelName">No channel selected</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Channel list sidebar -->
+            <aside class="channel-list">
+                <div class="channel-list-header">
+                    <h2>Channels</h2>
+                    <button id="addChannelBtn" class="add-channel-btn">+ Add Channel</button>
+                </div>
+                
+                <div class="search-box">
+                    <input type="text" id="channelSearch" placeholder="Search channels...">
+                </div>
+
+                <ul id="channelListContainer" class="channels">
+                    <!-- Channels will be dynamically added here -->
+                </ul>
+            </aside>
+        </main>
+
+        <!-- Add Channel Modal -->
+        <div id="addChannelModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add New Channel</h3>
+                    <button class="close-modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="channelName">Channel Name:</label>
+                        <input type="text" id="channelName" placeholder="Enter channel name">
+                    </div>
+                    <div class="form-group">
+                        <label for="channelUrl">Stream URL:</label>
+                        <input type="text" id="channelUrl" placeholder="Enter stream URL">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveChannelBtn" class="btn btn-primary">Save Channel</button>
+                    <button class="btn btn-secondary close-modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
