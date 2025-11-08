@@ -109,6 +109,14 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 8px var(--shadow);
     aspect-ratio: 16 / 9;
+    /* Fallback for older browsers */
+    padding-bottom: 56.25%; /* 16:9 ratio */
+}
+
+@supports (aspect-ratio: 16 / 9) {
+    .video-container {
+        padding-bottom: 0;
+    }
 }
 
 .video-container video {

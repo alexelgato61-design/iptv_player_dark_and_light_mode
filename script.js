@@ -56,7 +56,7 @@ class ChannelManager {
 
     addChannel(name, url) {
         const channel = {
-            id: Date.now(),
+            id: Date.now() + Math.random().toString(36).substr(2, 9),
             name: name.trim(),
             url: url.trim()
         };
@@ -109,6 +109,7 @@ class ChannelManager {
             deleteBtn.title = 'Delete channel';
             deleteBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                // Simple confirmation via browser native dialog
                 if (confirm(`Delete channel "${channel.name}"?`)) {
                     this.deleteChannel(channel.id);
                 }
@@ -253,19 +254,29 @@ class ModalManager {
         const url = this.channelUrlInput.value.trim();
 
         if (!name) {
-            alert('Please enter a channel name');
-            this.channelNameInput.focus();
+            this.showInputError(this.channelNameInput, 'Please enter a channel name');
             return;
         }
 
         if (!url) {
-            alert('Please enter a stream URL');
-            this.channelUrlInput.focus();
+            this.showInputError(this.channelUrlInput, 'Please enter a stream URL');
             return;
         }
 
         channelManager.addChannel(name, url);
         this.close();
+    }
+
+    showInputError(input, message) {
+        input.style.borderColor = '#f44336';
+        input.focus();
+        input.setAttribute('placeholder', message);
+        
+        // Reset after a delay
+        setTimeout(() => {
+            input.style.borderColor = '';
+            input.setAttribute('placeholder', input === this.channelNameInput ? 'Enter channel name' : 'Enter stream URL');
+        }, 2000);
     }
 }
 
